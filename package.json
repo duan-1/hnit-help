@@ -1,0 +1,17 @@
+{
+  "name": "hnit-help",
+  "version": "0.0.1",
+  "description": "life tutorial in HNIT",
+  "main": "index.js",
+  "author": "duan",
+  "license": "MIT",
+  "devDependencies": {
+    "vuepress": "^1.9.7"
+  },
+  "scripts": {
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs",
+    "dev": "vuepress dev docs",
+    "build": "vuepress build docs"
+  }
+}
