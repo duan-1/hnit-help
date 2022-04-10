@@ -1,14 +1,20 @@
-name: Sync
-
-on:
-  push:
-    branches: [gh-pages]
-  workflow_dispatch:
-
+name: Build and Deploy
+on: [push]
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
+    - name: Checkout
+      uses: actions/checkout@master
+
+    - name: vuepress-deploy
+      uses: jenkey2011/vuepress-deploy@master
+      env:
+        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        TARGET_REPO: duan-1/hnit-help
+        TARGET_BRANCH: gh-pages
+        BUILD_SCRIPT: yarn && yarn build
+        BUILD_DIR: docs/.vuepress/dist
       - name: Sync to Gitee
         uses: wearerequired/git-mirror-action@master
         env:
@@ -17,6 +23,7 @@ jobs:
         with:
           # 注意替换为你的 GitHub 源仓库地址
           source-repo: git@github.com:duan-1/hnit-help.git
+          branch: gh-pages
           # 注意替换为你的 Gitee 目标仓库地址
           destination-repo: git@gitee.com:duan1104/hnit-help.git
 

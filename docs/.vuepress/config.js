@@ -1,7 +1,7 @@
 module.exports = {
     title: '校园生活不完全指南🧰',
     description: 'Just playing around',
-    base: '/hnit-help/'
+    base: '/hnit-help/',
 
     // 主题设置
     themeConfig: {
